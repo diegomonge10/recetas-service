@@ -1,18 +1,18 @@
 require "test_helper"
 
-class IngredientesControllerTest < ActionDispatch::IntegrationTest
+class IngredienteControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @ingrediente = ingredientes(:one)
+    @ingrediente = ingrediente(:one)
   end
 
   test "should get index" do
-    get ingredientes_url, as: :json
+    get ingrediente_url, as: :json
     assert_response :success
   end
 
   test "should create ingrediente" do
     assert_difference("Ingrediente.count") do
-      post ingredientes_url, params: { ingrediente: { id: @ingrediente.id, nombre: @ingrediente.nombre } }, as: :json
+      post ingrediente_url, params: { ingrediente: { id: @ingrediente.id, nombre: @ingrediente.nombre } }, as: :json
     end
 
     assert_response :created

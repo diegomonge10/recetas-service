@@ -1,14 +1,14 @@
-class IngredientesController < ApplicationController
+class IngredienteController < ApplicationController
   before_action :set_ingrediente, only: %i[ show update destroy ]
 
   # GET /ingredientes
   def index
-    @ingredientes = Ingrediente.all
+    @ingrediente = Ingrediente.all
 
-    render json: @ingredientes
+    render json: @ingrediente
   end
 
-  # GET /ingredientes/1
+  # GET /ingrediente/1
   def show
     render json: @ingrediente
   end
@@ -24,7 +24,7 @@ class IngredientesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /ingredientes/1
+  # PATCH/PUT /ingrediente/1
   def update
     if @ingrediente.update(ingrediente_params)
       render json: @ingrediente
