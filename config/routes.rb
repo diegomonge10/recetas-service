@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
-  resources :ingrediente
-  resources :receta
+  namespace :api, defaults: {format: 'json'} do
+    namespace :v1 do
+      resources :receta
+      resources :ingrediente
+      resources :recetaingrediente
+    end
+  end
+  
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

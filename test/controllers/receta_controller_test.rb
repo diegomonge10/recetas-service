@@ -2,7 +2,7 @@ require "test_helper"
 
 class RecetaControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @recetum = receta(:one)
+    @receta = receta(:one)
   end
 
   test "should get index" do
@@ -10,27 +10,27 @@ class RecetaControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should create recetum" do
-    assert_difference("Recetum.count") do
-      post receta_url, params: { recetum: { id: @recetum.id, nombre: @recetum.nombre, porciones: @recetum.porciones, valoracion: @recetum.valoracion } }, as: :json
+  test "should create receta" do
+    assert_difference("Receta.count") do
+      post receta_url, params: { receta: { id: @receta.id, nombre: @receta.nombre, porciones: @receta.porciones, valoracion: @receta.valoracion } }, as: :json
     end
 
     assert_response :created
   end
 
-  test "should show recetum" do
-    get recetum_url(@recetum), as: :json
+  test "should show receta" do
+    get receta_url(@receta), as: :json
     assert_response :success
   end
 
-  test "should update recetum" do
-    patch recetum_url(@recetum), params: { recetum: { id: @recetum.id, nombre: @recetum.nombre, porciones: @recetum.porciones, valoracion: @recetum.valoracion } }, as: :json
+  test "should update receta" do
+    patch receta_url(@receta), params: { receta: { id: @receta.id, nombre: @receta.nombre, porciones: @receta.porciones, valoracion: @receta.valoracion } }, as: :json
     assert_response :success
   end
 
-  test "should destroy recetum" do
-    assert_difference("Recetum.count", -1) do
-      delete recetum_url(@recetum), as: :json
+  test "should destroy receta" do
+    assert_difference("Receta.count", -1) do
+      delete receta_url(@receta), as: :json
     end
 
     assert_response :no_content
