@@ -6,7 +6,7 @@ class Api::V1::RecetaController < ApplicationController
     @receta = Receta.all
 
     #render json: @receta, include: "ingredientes"
-    render :show
+    render :showall
   end
 
   # GET /receta/1
