@@ -10,6 +10,7 @@ json.data do
                         json.array! receta.recetaIngredientes do |recetaIngrediente|
                         json.nombre recetaIngrediente.ingrediente.nombre
                         json.cantidad recetaIngrediente.cantidad
+                        json.unidad recetaIngrediente.ingrediente.unidad
                         end
                     end
                 end

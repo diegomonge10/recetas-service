@@ -18,7 +18,7 @@ class Api::V1::IngredienteController < ApplicationController
     @ingrediente = Ingrediente.new(ingrediente_params)
 
     if @ingrediente.save
-      render json: @ingrediente, status: :created, location: @ingrediente
+      render json: @ingrediente, status: :created, location: api_v1_ingrediente_url(@ingrediente)
     else
       render json: @ingrediente.errors, status: :unprocessable_entity
     end
@@ -46,6 +46,6 @@ class Api::V1::IngredienteController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def ingrediente_params
-      params.require(:ingrediente).permit(:id, :nombre)
+      params.require(:ingrediente).permit(:id, :nombre, :unidad)
     end
 end
