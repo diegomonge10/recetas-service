@@ -4,9 +4,13 @@ class Api::V1::RecetaController < ApplicationController
   # GET /receta
   def index
     if params[:order]
-      @receta = Receta.all.order(valoracion: params[:order])
+      @receta = Receta.all.order(valoracion: params[:order]).first
     else
-      @receta = Receta.all.order(nombre: :asc)
+      if params[:filter]
+        @receta = Receta.includes(:recetaIngredientes, :ingredientes, :pasos).where("ingrediente.nombre like ? or receta.nombre like ?", "%#{params[:filter]}%", "%#{params[:filter]}%").references(:recetaIngredientes, :ingredientes, :pasos)
+      else
+        @receta = Receta.all.order(nombre: :asc)
+      end
     end
 
     #render json: @receta, include: "ingredientes"
