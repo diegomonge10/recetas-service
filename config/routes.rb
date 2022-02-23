@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       resources :receta
       resources :ingrediente
       resources :recetaingrediente
+      resources :paso
     end
   end
   
