@@ -3,7 +3,11 @@ class Api::V1::RecetaController < ApplicationController
 
   # GET /receta
   def index
-    @receta = Receta.all
+    if params[:order]
+      @receta = Receta.all.order(valoracion: params[:order])
+    else
+      @receta = Receta.all.order(nombre: :asc)
+    end
 
     #render json: @receta, include: "ingredientes"
     render :showall
@@ -20,7 +24,7 @@ class Api::V1::RecetaController < ApplicationController
     @receta = Receta.new(receta_params)
 
     if @receta.save
-      render json: @receta, status: :created, location: @receta
+      render json: @receta, status: :created, location: api_v1_receta_url(@receta)
     else
       render json: @receta.errors, status: :unprocessable_entity
     end
@@ -48,6 +52,6 @@ class Api::V1::RecetaController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def receta_params
-      params.require(:receta).permit(:id, :nombre, :valoracion, :porciones)
+      params.require(:recetum).permit(:id, :nombre, :valoracion, :porciones)
     end
 end
