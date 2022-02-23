@@ -18,7 +18,7 @@ class Api::V1::RecetaIngredienteController < ApplicationController
     @receta_ingrediente = RecetaIngrediente.new(receta_ingrediente_params)
 
     if @receta_ingrediente.save
-      render json: @receta_ingrediente, status: :created, location: @receta_ingrediente
+      render json: @receta_ingrediente, status: :created, location: api_v1_receta_ingrediente_url(@receta_ingrediente)
     else
       render json: @receta_ingrediente.errors, status: :unprocessable_entity
     end
