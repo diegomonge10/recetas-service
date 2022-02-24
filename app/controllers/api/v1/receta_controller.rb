@@ -4,7 +4,7 @@ class Api::V1::RecetaController < ApplicationController
   # GET /receta
   def index
     if params[:order]
-      @receta = Receta.all.order(valoracion: params[:order]).first
+      @receta = Receta.all.order(valoracion: params[:order]).limit(3)
     else
       if params[:filter]
         @receta = Receta.includes(:recetaIngredientes, :ingredientes, :pasos).where("ingrediente.nombre like ? or receta.nombre like ?", "%#{params[:filter]}%", "%#{params[:filter]}%").references(:recetaIngredientes, :ingredientes, :pasos)
